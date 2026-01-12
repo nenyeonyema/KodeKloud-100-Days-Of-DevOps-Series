@@ -1,0 +1,38 @@
+---
+- name: Prepare /opt/opt.txt on app servers
+  hosts: app_servers
+  become: true
+  tasks:
+    - name: Ensure /opt directory exists
+      file:
+        path: /opt
+        state: directory
+        mode: '0755'
+
+    - name: Create a blank /opt/opt.txt file
+      file:
+        path: /opt/opt.txt
+        state: touch
+        mode: '0655'
+      # No content is added; file is blank by default
+
+    - name: Set ownership per-host
+      ansible.builtin.set_fact:
+        owner_map:
+          app1: "tony"
+          app2: "steve"
+          app3: "banner"
+          app1_group: "tony"
+          app2_group: "steve"
+          app3_group: "banner"
+      when: inventory_hostname in ["app1", "app2", "app3"]
+
+    - name: Apply per-host ownership
+      file:
+        path: /opt/opt.txt
+        owner: "{{ host_owner }}"
+        group: "{{ host_group }}"
+      vars:
+        host_owner: "{{ (inventory_hostname == 'app1') | ternary('tony','') }}"
+        host_group: "{{ (inventory_hostname == 'app1') | ternary('tony','') }}"
+      when: inventory_hostname in ["app1","app2","app3"]
