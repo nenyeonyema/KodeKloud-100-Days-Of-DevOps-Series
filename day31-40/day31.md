@@ -1,12 +1,10 @@
----
-**Task 31**
-The Nautilus application development team was working on a git repository /usr/src/kodekloudrepos/news present on Storage server in Stratos DC. One of the developers stashed some in-progress changes in this repository, but now they want to restore some of the stashed changes. Find below more details to accomplish this task:
 
+#Task 31
 
+> The Nautilus application development team was working on a git repository /usr/src/kodekloudrepos/news present on Storage server in Stratos DC. One of the developers stashed some in-progress changes in this repository, but now they want to restore some of the stashed changes. Find below more details to accomplish this task:
 
-Look for the stashed changes under /usr/src/kodekloudrepos/news git repository, and restore the stash with stash@{1} identifier. Further, commit and push your changes to the origin.
+> Look for the stashed changes under /usr/src/kodekloudrepos/news git repository, and restore the stash with stash@{1} identifier. Further, commit and push your changes to the origin.
 
----
 ### TASK 31: Restore stash@{1}, commit it, and push to origin
 
 1. Navigate to the repo
